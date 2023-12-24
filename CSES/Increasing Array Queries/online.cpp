@@ -12,7 +12,6 @@ int it=0;
 node arr[16000000];
 node* newnode() { return arr+it++; }
  
- 
 node* copy(node* nodo, int l, int r) {
     node* nodo1 = newnode();
     nodo1->v = nodo->v;
