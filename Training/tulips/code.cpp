@@ -11,15 +11,13 @@ int main() {
     vector<vector<ll>>dp(k,vector<ll>(n,0));
     
     dp[0][0]=v[0];
-    for (int i=0;i<n;i++) {
-        dp[0][i] = min(dp[0][i-1],v[i]);
-    }
+    for (int i=0;i<n;i++) dp[0][i] = min(dp[0][i-1],v[i]);
     
     for (int j=1;j<k;j++) {
         vector<ll>maxim(n,0);
         stack<pair<int,ll>>s;
-        for (int i=j;i<n;i++) {
-            
+        
+        for (int i=j;i<n;i++) {    
             maxim[i] = dp[j-1][i-1];
                 
             while (!s.empty() && v[s.top().first] >= v[i]) {
