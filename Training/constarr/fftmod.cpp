@@ -5,7 +5,7 @@
 #define sqrtmod 31622
 using namespace std;
 
-vector<cx> fft(vector<cx>pol, int n, bool ifft) {
+vector<cx> fft(vector<cx>&pol, int n, bool ifft) {
     if (n == 1) return pol;
     
     vector<cx>pol_e(n/2), pol_o(n/2);
@@ -31,57 +31,43 @@ vector<cx> fft(vector<cx>pol, int n, bool ifft) {
     return pts;
 }
 
-vector<ll> convolution(vector<ll>&a, vector<ll>&b, int n, int m) {
+vector<ll> convolution_mod(vector<ll>&a, vector<ll>&b, int n, int m) {
     int size = 1<<(int)ceil(log2(n+m-1));
     
-    vector<cx>a_pol(size),b_pol(size);
-    for (int i=0;i<n;i++) a_pol[i]=a[i];
-    for (int i=0;i<m;i++) b_pol[i]=b[i];
+    // a[i] = a_s[i] + (sqrtmod)(a_l[i])
+    vector<cx>a_s(size),a_l(size),b_s(size),b_l(size);
+    for (int i=0;i<n;i++) a_s[i]=(ll)(a[i] % sqrtmod);
+    for (int i=0;i<n;i++) a_l[i]=(ll)(a[i] / sqrtmod);
+    for (int i=0;i<n;i++) b_s[i]=(ll)(b[i] % sqrtmod);
+    for (int i=0;i<n;i++) b_l[i]=(ll)(b[i] / sqrtmod);
     
-    vector<cx>a_pts = fft(a_pol, size, 0);
-    vector<cx>b_pts = fft(b_pol, size, 0);
-    
-    vector<cx>c_pts(size);
-    for (int i=0;i<size;i++) c_pts[i] = a_pts[i] * b_pts[i];
+    a_s = fft(a_s, size, 0);
+    a_l = fft(a_l, size, 0);
+    b_s = fft(b_s, size, 0);
+    b_l = fft(b_l, size, 0);
 
-    vector<cx>c_pol = fft(c_pts, size, 1);
-    vector<ll>c(n+m-1);    
-    for (int i=0;i<n+m-1;i++) c[i] = c_pol[i].real() / size + 0.5;
+    // c = (a_s + sqrtmod(a_l))*(b_s + sqrtmod(b_l)) with "*" meaning convolution
+    // c = a_s*b_s + sqrtmod(a_s*b_l + a_l*b_s) + sqrtmod^2(a_l*b_l)
+    vector<cx>c_ss(size),c_sl(size),c_ll(size);
+    for (int i=0;i<size;i++) c_ss[i] = a_s[i] * b_s[i];
+    for (int i=0;i<size;i++) c_sl[i] = a_s[i] * b_l[i] + a_l[i] * b_s[i];
+    for (int i=0;i<size;i++) c_ll[i] = a_l[i] * b_l[i];
+
+    c_ss = fft(c_ss, size, 1);
+    c_sl = fft(c_sl, size, 1);
+    c_ll = fft(c_ll, size, 1);
+    
+    for (int i=0;i<n+m-1;i++) c_ss[i] = c_ss[i].real() / size + 0.5;
+    for (int i=0;i<n+m-1;i++) c_sl[i] = c_sl[i].real() / size + 0.5;
+    for (int i=0;i<n+m-1;i++) c_ll[i] = c_ll[i].real() / size + 0.5;
         
-    return c;
-}
-
-vector<ll> convolution_mod(vector<ll>&a, vector<ll>&b, int n, int m) {
-    // a = a_small + sqrtmod(a_large)
-    vector<ll>a_small(n), a_large(n), b_small(m), b_large(m);
-    for (int i=0;i<n;i++) {
-        a_small[i] = a[i] % sqrtmod;
-        a_large[i] = a[i] / sqrtmod;
-    }
-    for (int i=0;i<m;i++) {
-        b_small[i] = b[i] % sqrtmod;
-        b_large[i] = b[i] / sqrtmod;
-    }
-    // c = (a_s + (sqrtmod)a_l)*(b_s + (sqrtmod)b_l)  with "*" meaning convolution
-    // c = a_s*b_s + sqrtmod(a_s*b_l) + sqrtmod(a_l*b_a) + sqrtmod^2(a_l * b_l)
-    vector<ll>asbs = convolution(a_small, b_small, n, m);
-    vector<ll>asbl = convolution(a_small, b_large, n, m);
-    vector<ll>albs = convolution(a_large, b_small, n, m);
-    vector<ll>albl = convolution(a_large, b_large, n, m);
-    for (auto &x:asbs) x %= mod;
-    for (auto &x:asbl) x %= mod;
-    for (auto &x:albs) x %= mod;
-    for (auto &x:albl) x %= mod;
-    
     vector<ll>c(n+m-1,0);
     for (int i=0;i<n+m-1;i++) {
-        c[i] += asbs[i];
+        c[i] += (ll)c_ss[i].real() % mod;
         c[i] %= mod;
-        c[i] += (sqrtmod * asbl[i]) % mod;
+        c[i] += (sqrtmod * ((ll)c_sl[i].real() % mod)) % mod;
         c[i] %= mod;
-        c[i] += (sqrtmod * albs[i]) % mod;
-        c[i] %= mod;
-        c[i] += (sqrtmod * sqrtmod * albl[i]) % mod;
+        c[i] += (sqrtmod * sqrtmod * ((ll)c_ll[i].real() % mod)) % mod;
         c[i] %= mod;
     }
     
