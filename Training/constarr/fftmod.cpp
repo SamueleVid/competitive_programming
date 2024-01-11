@@ -38,8 +38,8 @@ vector<ll> convolution_mod(vector<ll>&a, vector<ll>&b, int n, int m) {
     vector<cx>a_s(size),a_l(size),b_s(size),b_l(size);
     for (int i=0;i<n;i++) a_s[i]=(ll)(a[i] % sqrtmod);
     for (int i=0;i<n;i++) a_l[i]=(ll)(a[i] / sqrtmod);
-    for (int i=0;i<n;i++) b_s[i]=(ll)(b[i] % sqrtmod);
-    for (int i=0;i<n;i++) b_l[i]=(ll)(b[i] / sqrtmod);
+    for (int i=0;i<m;i++) b_s[i]=(ll)(b[i] % sqrtmod);
+    for (int i=0;i<m;i++) b_l[i]=(ll)(b[i] / sqrtmod);
     
     a_s = fft(a_s, size, 0);
     a_l = fft(a_l, size, 0);
