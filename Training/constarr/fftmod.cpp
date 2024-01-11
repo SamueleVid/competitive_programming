@@ -1,4 +1,4 @@
-// disclaimer: fftmod works with this problem but doesn't on library checker :(
+// disclaimer: fftmod works on this problem but doesn't on library checker :(
 #include <bits/stdc++.h>
 #define ll long long
 #define cx complex<double>
