@@ -25,7 +25,7 @@ int main() {
         int f = adj[i].size() - 1;
         int m = q.size() - 1;
         while (m >= 0 && f >= 0) {
-            if (q[m-1] < adj[i][f]) {
+            if (q[m - 1] < adj[i][f]) {
                 q[m] = min(adj[i][f], q[m]);
                 f --;
             }
