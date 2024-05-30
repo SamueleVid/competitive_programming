@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int INF = 2e9;
-
 const int MAXM = 1e6+10;
+const int LOG = 20;
 vector<int>adj[MAXM];
 
 int main() {
@@ -18,24 +17,21 @@ int main() {
     for (int i = 1; i <= M; i ++) sort(adj[i].begin(), adj[i].end());
 
     vector<int> q;
-    q.push_back(0);
-    q.push_back(INF);
+    q.push_back(MAXM);
     for (int i = 1; i <= M; i ++) {
         
-        int f = adj[i].size() - 1;
-        int m = q.size() - 1;
-        while (m >= 0 && f >= 0) {
-            if (q[m - 1] < adj[i][f]) {
-                q[m] = min(adj[i][f], q[m]);
-                f --;
+        for (int f = adj[i].size() - 1; f >= 0; f --) {
+            int k = q.size() - 1;
+            for (int pw = 1 << LOG; pw >= 1; pw /= 2) {
+                if (k - pw >= 0 && q[k - pw] >= adj[i][f]) k -= pw;
             }
-            else {
-                m --;
-            }
+            q[k] = adj[i][f];
         }
 
-        if (q.back() != INF) q.push_back(INF);
+        if (q.back() != MAXM) {
+            q.push_back(MAXM);
+        }
     }
 
-    cout << 2 * (q.size() - 2) << '\n';
+    cout << 2 * (q.size() - 1) << '\n';
 }
