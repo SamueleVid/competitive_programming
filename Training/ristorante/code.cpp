@@ -32,5 +32,5 @@ int conta(int N, vector<int> &A, vector<int> &P, vector<int> &D) {
     res = max(res, pick_in_order(N, D, A, P));
     res = max(res, pick_in_order(N, D, P, A));
 
-    return sum;
+    return res;
 }
