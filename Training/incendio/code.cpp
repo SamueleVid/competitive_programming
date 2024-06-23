@@ -4,7 +4,7 @@ using namespace std;
 
 int alzati(int N, int M, int X[], int Y[]) {
     vector<bool> v(M);
-    vector<ll> d(M,1e18);
+    vector<ll> d(M, 1e18);
 
     for (int i = 0; i < M; i ++) {
         // distanza dall'alto
