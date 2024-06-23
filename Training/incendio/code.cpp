@@ -4,7 +4,7 @@ using namespace std;
 
 int alzati(int N, int M, int X[], int Y[]) {
     vector<bool> v(M);
-    vector<ll> d(M);
+    vector<ll> d(M,1e18);
 
     for (int i = 0; i < M; i ++) {
         // distanza dall'alto
@@ -14,13 +14,20 @@ int alzati(int N, int M, int X[], int Y[]) {
     // minimizza il massimo arco dal top-right
     for (int k = 0; k < M; k ++) {
         int minim = -1;
-        for (int i = 0; i < M; i ++) if ((minim == -1 || d[i] < d[minim]) && !v[i]) minim = i;
+        for (int i = 0; i < M; i ++) {
+            if ((minim == -1 || d[i] < d[minim]) && !v[i]) minim = i;
+        }
         v[minim] = 1;
         
         for (int i = 0; i < M; i ++) {
             ll manhattan = (ll)abs(Y[minim] - Y[i]) + (ll)abs(X[minim] - X[i]);
-            ll time = (manhattan - 1) / 2;
-            if (X[i] == X[minim] || Y[i] == Y[minim]) time --;
+            ll time;
+            if (X[i] == X[minim] || Y[i] == Y[minim]) {
+                time = (manhattan - manhattan % 2) / 2;
+            }
+            else {
+                time = (manhattan + manhattan % 2 - 2) / 2;
+            }
             if (!v[i]) d[i] = min(d[i], max(d[minim], time));
         }
     }
