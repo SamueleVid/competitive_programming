@@ -6,13 +6,13 @@ using namespace std;
 const int K = 5000;
 // sicuramente MAXOP <= 2 * log2(K)
 const int MAXOP = 24;
-struct zp {
+struct expr {
     ll ops = 1e9;
     ll lexp;
     ll rexp;
     string op;
 };
-zp dp[K];
+expr dp[K];
 
 void print(int i) {
     if (i == 1) {
