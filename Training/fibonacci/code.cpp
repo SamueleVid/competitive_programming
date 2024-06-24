@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long
 
-const int MAXM = 1e9+10;
+const int MAXM = 1e9 + 10;
 map<pair<int, int>, ll> dp;
 map<int, ll> res;
 
