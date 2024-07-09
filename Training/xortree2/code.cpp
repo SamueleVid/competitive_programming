@@ -1,3 +1,4 @@
+// credit a lorenzo ferrari e alla sua soluzione https://github.com/lorenzo-ferrari/olinfo/blob/main/src/ois_xortree2.cpp
 #include <bits/stdc++.h>
 using namespace std;
 
