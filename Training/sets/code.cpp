@@ -32,9 +32,8 @@ int conta(int N, vector<int> D) {
     // dag dp max dist
     fill(dp, dp + MAXN, 0);
     for (int i = 0; i <= N; i ++) {
-        dp[i + 1] = max(dp[i], dp[i + 1]);
         for (auto [v, w] : adj[i]) {
-            dp[v + 1] = max(dp[v + 1], dp[i + 1] + w);
+            dp[v + 1] = max(dp[v + 1], dp[i] + w);
         }
     }
 
