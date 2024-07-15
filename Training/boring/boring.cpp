@@ -30,7 +30,7 @@ bool comp(int i, fx &a, fx &b) {
     return lg[a.b] + lg[i] * a.c < lg[b.b] + lg[i] * b.c;
 }
 
-// ""tecnica di bisezione"" : indago sempre più a fondo l'intersezione settando come valore del segment la funzione maggiore
+// ""metodo di bisezione"" : indago sempre più a fondo l'intersezione settando come valore del segment la funzione maggiore
 // nel punto medio del range. Andando a ritrovare la funzione maggiore per un punto, si risale il segment andando a riscoprire
 // le scelte fatte in passato, pian piano sezionando nell'intersezione, e confrontare le funzioni segnate nel path O(logn)
 // verso il root rispetto al punto della query per trovare il punto più alto. 
