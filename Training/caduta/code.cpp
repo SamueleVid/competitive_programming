@@ -73,8 +73,10 @@ stato_t correggi(int N, int h[], coppia_t* scambio) {
     if (primo == N) return OK;
 
     lazysegtree seg(dipende, N);
-    
+    // deve essere possibile a coprire il buco, dunque a sinistra del buco (< primo)
+    // e abbastanza a destra da poter fare il salto (>= ultimo - MAXH)
     for (int i = max(0, ultimo - MAXH); i < primo; i ++) {
+        // deve riuscire a saltare il buco, quindi arrivare dopo ultimo
         for (int alt = ultimo - i; alt <= MAXH; alt ++) {
             for (auto j : raggruppa_per_h[alt]) {
                 seg.update(1, 0, PW, min(N, i + h[i]), min(N, i + h[j]), 1);
