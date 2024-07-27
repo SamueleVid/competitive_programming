@@ -16,7 +16,6 @@ const int PW = 8388608;
 const int MAXH = 1000;
 
 struct lazysegtree {
-
     int seg[2 * PW];
     int lazy[2 * PW];
 
