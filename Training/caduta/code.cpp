@@ -79,6 +79,7 @@ stato_t correggi(int N, int h[], coppia_t* scambio) {
         // deve riuscire a saltare il buco, quindi arrivare dopo ultimo
         for (int alt = ultimo - i; alt <= MAXH; alt ++) {
             for (auto j : raggruppa_per_h[alt]) {
+                // h[j] > h[i], in quanto non esiste un h[i] >= ultimo - i (altrimenti non ci sarebbe il buco)
                 seg.update(1, 0, PW, min(N, i + h[i]), min(N, i + h[j]), 1);
                 seg.update(1, 0, PW, min(N, j + h[i]), min(N, j + h[j]), -1);
 
