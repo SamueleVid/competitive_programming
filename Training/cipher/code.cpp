@@ -69,7 +69,7 @@ int main() {
     for (int i = 0; i < K; i ++) cin >> keys[i];
     for (int i = 0; i < N; i ++) cin >> strings[i];
 
-    map<int, trie> tries; // length of string, trie
+    map<int, trie> tries; // length of key, trie
 
     for (int i = 0; i < K; i ++) {
         int size = keys[i].size();
