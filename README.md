@@ -1,6 +1,6 @@
 # Competitive Programming
 
-In this repo are collected the solutions of problems I've solved as part of my training for the [https://www.olimpiadi-informatica.it/]{OII (Italian Olympiad in Informatics}.
+In this repo are collected the solutions of problems I've solved as part of my training for the [OII (Italian Olympiad in Informatics)]{https://www.olimpiadi-informatica.it}.
 
 Posto il codice di tutti i problemi risolti trovabili negli appunti:
 [Appunti](https://docs.google.com/document/d/1vP0bBrg6piIZxfkjJVmWQSFAIC9XoP5iAeK_Glv_8K0/edit?usp=sharing)
