@@ -13,24 +13,24 @@ void solve() {
         if (x == '&' || x == ')' || x == '^') continue;
         group.back() |= 1 << (x - 'a');
     }
-	
-	// "counting subsets" section from handbook
-	bool sums[1 << K];
-	fill(sums, sums + (1 << K), 0);
-	for (auto x : group) sums[x] ^= 1;
-	
-	for (int i = 0; i < K; i ++) {
-		for (int j = 0; j < (1 << K); j ++) {
-			if (j & (1 << i)) sums[j] ^= sums[j ^ (1 << i)];
-		}
-	}
+    
+    // "counting subsets" section from handbook
+    bool sums[1 << K];
+    fill(sums, sums + (1 << K), 0);
+    for (auto x : group) sums[x] ^= 1;
+    
+    for (int i = 0; i < K; i ++) {
+        for (int j = 0; j < (1 << K); j ++) {
+            if (j & (1 << i)) sums[j] ^= sums[j ^ (1 << i)];
+        }
+    }
 
     int tot = 0;
     for (int i = 0; i < (1 << K); i ++) {
-    	tot += sums[i];
+        tot += sums[i];
     }
     
-	cout << tot << '\n';
+    cout << tot << '\n';
 }
 
 int main() {
