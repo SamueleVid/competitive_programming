@@ -6,12 +6,9 @@ constexpr int MAXK = 16;
 int pw[MAXK];
 
 struct tritset { // lmao capita? perché bi-tset e tri-tset xd
+    // (0, 1, 2) = (non preso, preso, da non prendere)
     int value;
 
-    tritset() {
-        // (0, 1, 2) = (non preso, preso, da non prendere)
-        value = 0;
-    }
     tritset(int v) { value = v; }
 
     int get_elem(int pos) {
@@ -32,7 +29,7 @@ void setup(int K, string &S, vector<tritset> &group) {
     for (auto x : S) {
         if (x == '&' || x == '^') continue;
         if (x == '(') {            
-            group.push_back(tritset());
+            group.push_back(tritset(0));
             inverse = false;
             to_ignore = false;
             continue;
