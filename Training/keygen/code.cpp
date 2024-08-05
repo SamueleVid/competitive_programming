@@ -68,10 +68,10 @@ void solve() {
     vector<tritset> group;
     setup(K, S, group);
 
-	bool sums[pw[K]];
-	fill(sums, sums + pw[K], 0);
+    bool sums[pw[K]];
+    fill(sums, sums + pw[K], 0);
 
-	for (int i = 0; i < group.size(); i ++) sums[group[i].value] ^= 1;
+    for (int i = 0; i < group.size(); i ++) sums[group[i].value] ^= 1;
 
     int tot = 0;
     for (int s = 0; s < pw[K]; s ++) {
@@ -101,7 +101,7 @@ void solve() {
         }
     }
 
-	cout << tot << '\n';
+    cout << tot << '\n';
 }
 
 int main() {
