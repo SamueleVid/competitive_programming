@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 #define ll long long
+
 constexpr int MAXN = 1e5 + 5;
 constexpr int LOG = 18;
 vector<int> adj[MAXN];
