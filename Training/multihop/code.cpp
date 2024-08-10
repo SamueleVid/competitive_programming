@@ -1,4 +1,3 @@
-// fixxa che è [l, r) non [l, r]
 #include <bits/stdc++.h>
 using namespace std;
 
