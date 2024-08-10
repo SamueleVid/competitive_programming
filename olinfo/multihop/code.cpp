@@ -1,4 +1,4 @@
-// credit a francesco vercellesi e alla sua soluzione https://github.com/franv314/competitive/blob/soluzioni/olinfo/WEOI/multihop/multihop.cpp
+// credit a francesco vercellesi e alla sua soluzione (hint di utilizzare le matrici) https://github.com/franv314/competitive/blob/soluzioni/olinfo/WEOI/multihop/multihop.cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
