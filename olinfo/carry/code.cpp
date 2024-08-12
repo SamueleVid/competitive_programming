@@ -59,8 +59,9 @@ int main() {
             if (k + p > l) continue;
             if (alternating(x + k, x + k + p, y + k, y + k + p, hash_a, hash_b)) k += p;
         }
-
+        // se tutto il range è alternato o la coppia (0,0) viene prima del (1,1)
         if (k == l || A[x + k] == '0') cout << 1 << " ";
+        // se (1,1) viene prima del (0,0)
         else cout << 0 << " ";
     }
 }
