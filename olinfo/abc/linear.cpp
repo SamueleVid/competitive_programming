@@ -58,7 +58,7 @@ ll fill_holes(int holes, int b, int c) {
 
     int plus_one = 0, zero = 0, minus_one = 0;
 
-    // se ho tante / poche C, sono costretto a partire con alcuni casi di tipo 1 o 2. 
+    // se ho tante / poche C, sono costretto a partire con alcuni casi di tipo 1 o 3. 
     if (c > b) plus_one = c - b;
     if (c < b) minus_one = b - c;
     zero = holes - plus_one - minus_one;
