@@ -23,7 +23,6 @@ ll rec(ll x) {
     }
 
     dp[x] = res;
-    // cout << x << " -> " << res.first << " " << res.second << '\n';
     return dp[x].first;
 }
 
