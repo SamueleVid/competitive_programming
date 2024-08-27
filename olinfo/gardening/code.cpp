@@ -112,7 +112,6 @@ int main() {
             while (x != -1 && visited[h[x]] <= pos_in_array[x]) {
                 // limit the top of the hld to the highest not visited node in the hld
                 int top = tree_array[visited[h[x]]];
-                // cout << "x, top -> " << x << " " << top << '\n';
                 
                 // unlock
                 res += ps_unlock[pos_in_array[x] + 1] - ps_unlock[pos_in_array[top]];
