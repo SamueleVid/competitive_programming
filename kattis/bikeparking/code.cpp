@@ -1,3 +1,4 @@
+// credit editorial https://wiki.egoi2024.nl/en/tasks
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
