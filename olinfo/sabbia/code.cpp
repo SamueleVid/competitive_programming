@@ -4,42 +4,6 @@ using namespace std;
 
 constexpr int PW = 1048576;
 
-struct segment {
-    vector<ll> seg;
-
-    segment() {
-        seg.assign(2 * PW, 0);
-    }
-
-    void update(int x, ll d) {
-        x += PW;
-        seg[x] = d;
-        x /= 2;
-        while (x >= 1) {
-            seg[x] = max(seg[2 * x], seg[2 * x + 1]);
-            x /= 2;
-        }
-    }
-
-    ll query(int l, int r) {
-        l += PW; r += PW;
-        ll res = 0;
-        while (l <= r) {
-            if (l % 2 == 1) {
-                res = max(res, seg[l]);
-                l ++;
-            }
-            if (r % 2 == 0) {
-                res = max(res, seg[r]);
-                r --;
-            }
-            l /= 2; r /= 2;
-        }
-        return res;
-    }
-};
-segment seg;
-
 ll alleggerisci(int N, int M, vector<int> V, vector<int> L, vector<int> R, vector<ll> K) {
     // se due intervalli distinti necessitano rispettiamente di X e Y palloncini aggiunti, 
     // allora X + Y è un lowerbound della soluzione.
@@ -62,6 +26,7 @@ ll alleggerisci(int N, int M, vector<int> V, vector<int> L, vector<int> R, vecto
     }
     sort(sorted.begin(), sorted.end());
 
+    vector<ll> prefix_max(M + 1);
     vector<ll> dp(M);
     for (int i = M - 1; i >= 0; i --) {
         int idx = sorted[i].second;
@@ -72,9 +37,9 @@ ll alleggerisci(int N, int M, vector<int> V, vector<int> L, vector<int> R, vecto
         }
         k ++;
         
-        ll best_dp = seg.query(k, M - 1);
+        ll best_dp = prefix_max[k];
         dp[i] = value[idx] + best_dp;
-        seg.update(i, dp[i]);
+        prefix_max[i] = max(prefix_max[i + 1], dp[i]);
     }
 
     ll res = 0;
