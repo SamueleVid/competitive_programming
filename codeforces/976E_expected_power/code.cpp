@@ -3,11 +3,6 @@ using namespace std;
 #define ll long long
 
 constexpr ll MOD = 1e9 + 7;
-ll fp(ll a, ll b) {
-    if (!b) return 1;
-    ll h = fp(a, b / 2);
-    return h * h * ((b % 2) ? a : 1);
-}
 ll fp_mod(ll a, ll b) {
     if (!b) return 1;
     ll h = fp_mod(a, b / 2);
