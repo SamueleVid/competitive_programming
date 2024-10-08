@@ -64,7 +64,7 @@ void solve() {
     for (auto [w, u, v] : edges) {
         if (d.same_group(u, v)) continue;
         // I merge the solutions of the two subgraphs
-        // temp.size() - 1 is the number of server in the new subgraph 
+        // temp.size() - 1 is the number of wifi houses and possible servers in the new subgraph 
 
         u = d.boss(u);
         v = d.boss(v);
