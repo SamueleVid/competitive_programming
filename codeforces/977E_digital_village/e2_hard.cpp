@@ -52,7 +52,7 @@ void solve() {
 
     // In dp[i][j] I save the solution for K = j considering the subgraph defined
     // by the connected component of the DSU with root i.
-    // Obviously j <= wifi nodes in the component.
+    // Obviously j <= number of wifi nodes in the component.
     vector<vector<ll>> dp(N);
     for (int i = 0; i < N; i ++) {
         // Of course if there is a house that needs wifi 
