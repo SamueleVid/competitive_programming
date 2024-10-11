@@ -88,7 +88,7 @@ void solve() {
         // (follows from the conjecture that the servers for K_i are a subset for K_i+1 
         // and that for K = P it's optimal to place the P servers on top of the P wifi houses) 
         // K_0 = W * P, K_1 <= W * (P - 1), K_2 <= W * (P - 2), from K_1 - K_0 <= K_2 - K_1
-        // follows W * (P - 1) - W * P <= W * (P - 2) - W * (P - 1), W * P <= W * P.
+        // follows W * (P - 1) - W * P <= W * (P - 2) - W * (P - 1), W * -P <= W * -P.
         // This shows that DP stays convex.
         if (dp[u].size()) {
             dp[u].erase(dp[u].begin());
