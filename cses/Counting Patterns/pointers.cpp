@@ -42,7 +42,6 @@ int main() {
             curr = curr->next_trie[c - 'a'];
         }
         curr->words.push_back(i);
-        // cout << dict[i] << " " << curr << '\n';
     }
 
     // setting suffix edges and dfa edges
