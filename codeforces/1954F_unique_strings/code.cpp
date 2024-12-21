@@ -53,7 +53,7 @@ void solve() {
 
     // Exclude all the configuration whose number of ones
     // is less than C or more than C + K.
-    // The complexity of this is O(N * sum(d)), which is roughly O(N ^ 2),
+    // The complexity of this is O(N * sum(d)), which is roughly O(N ^ 2).
     vector<ll> unwanted(N + 1);
     for (auto d : divs) {
         vector<ll> knapsack(N + 1);
@@ -81,7 +81,7 @@ void solve() {
     // Exclude all the configurations whose number of ones is between
     // C and C + K and that don't have C ones in a row
     // The complexity of this is O(sum(d ^ 2)) <= O(N * sum(d)),
-    // which is roughly O(N ^ 2),
+    // which is roughly O(N ^ 2).
     ll unwanted2 = 0;
     for (auto d : divs) {
         // Instead of counting each one (N / d) times 
