@@ -37,8 +37,7 @@ vector<int> get_divisors(int N) {
 void solve() {
     int N, C, K; cin >> N >> C >> K;
     vector<int> divs = get_divisors(N);
-    int D = divs.size();
-
+    
     // Keep track for how many numbers [1, N] the each divisors corrisponds to.
     map<int, ll> gcds;
     for (int i = 1; i <= N; i ++) gcds[gcd(N, i)] ++;
