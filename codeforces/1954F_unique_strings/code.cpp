@@ -70,7 +70,7 @@ void solve() {
         }
     }
 
-    // I perform Burnside lemma on the configurations with i ones.
+    // I perform Burnside lemma on each configuration with i ones.
     // I can do this because these sets are closed under cyclic shift.
     for (int i = 0; i <= N; i ++) unwanted[i] = (unwanted[i] * inv(N)) % MOD;
 
