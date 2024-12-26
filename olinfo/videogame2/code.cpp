@@ -38,7 +38,7 @@ ll lagrange_interpolate(ll x, vector<ll> y) { // x [0, N]
     for (ll i = 0; i <= N; i ++) {
         // numerator
         ll l = (i > 0 ? prefix[i - 1] : 1) * (i < N ? suffix[i + 1] : 1) % MOD;
-        // denumerator
+        // denominator
         l = l * (MOD + (((N - i) % 2) ? -1 : 1) * (inv_fact[i] * inv_fact[N - i] % MOD)) % MOD;
         // multiply by y
         res = (res + l * y[i]) % MOD;
