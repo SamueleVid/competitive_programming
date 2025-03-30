@@ -3,7 +3,7 @@ using namespace std;
 
 bool possible = true;
 
-// cycle detection
+// la dfs serve per rilevare possibili cicli
 void dfs(bool sx, int nodo, vector<bool> &v_sx, vector<bool> &v_dx, vector<vector<int>> &adj_sx, vector<vector<int>> &adj_dx, int p) {
     if (sx) {
         if (v_sx[nodo]) {
@@ -84,10 +84,9 @@ int main() {
         return 0;
     }
 
-    vector<int> SX, DX;
-
-    vector<bool> piazzato_sx(N), piazzato_dx(M);
     // piazzo le vari componenti piano piano
+    vector<int> SX, DX;
+    vector<bool> piazzato_sx(N), piazzato_dx(M);
     while (true) {
         int start = -1;
         bool sx = 1;
