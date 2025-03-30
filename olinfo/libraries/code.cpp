@@ -81,7 +81,7 @@ int main() {
             BC_no_x -= B_st[x] * (C_st[u] - C_st[x] - C[u]);
             // remove all Cs counted in child x
             BC_no_x -= C_st[x] * (B_st[u] - B_st[x] - B[u]);
-            // fill the available place of child x with As
+            // fill the available space of child x with As
             res[u] += A_st[x] * BC_no_x;
         }
 
