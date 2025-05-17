@@ -11,10 +11,10 @@ int main() {
 
     vector<int> dp(X + 1);
     dp[0] = 1;
-    for (int i = 0; i < N; i ++) {
+    for (auto c : C) {
         // qua parto dall'inizio e non dalla fine, così posso utilizzare la stessa moneta più volte
-        for (int j = C[i]; j <= X; j ++) {
-            dp[j] = (dp[j] + dp[j - C[i]]) % MOD;
+        for (int j = c; j <= X; j ++) {
+            dp[j] = (dp[j] + dp[j - c]) % MOD;
         }
     }
 
