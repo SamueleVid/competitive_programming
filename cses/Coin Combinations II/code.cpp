@@ -21,5 +21,8 @@ int main() {
     // Calcolo dp iterando prima per le monete e poi per il valore, questo significa conto le monete senza ordine.
     // Se penso di visualizzare con una sequenza le monete che aggiungo, le monete dello stesso tipo formano sempre un blocco continuo.
 
+    // Da questo si nota il trucco di invertire l’ordine di iterazione nel caso ci si renda conto che la DP che si sta scrivendo stia contando
+    // anche casi che si considerano uguali, o viceversa.
+
     cout << dp[X] << '\n';
 }
