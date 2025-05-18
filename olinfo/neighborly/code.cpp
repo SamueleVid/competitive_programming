@@ -4,7 +4,6 @@ using namespace std;
 
 constexpr ll MAXN = 1e6 + 5;
 constexpr ll MAXS = 1e4 + 5;
-constexpr ll ABC = 256 + 5;
 constexpr ll LOGS = 14;
 constexpr ll LOGN = 20;
 
