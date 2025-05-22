@@ -25,6 +25,7 @@ int main() {
             if (C[i] != C[x]) {
                 // se due vicini hanno un colore diverso me li salvo per far partire da lì la bfs multisource
                 if (v[i] != -1 && v[i] != C[x]) {
+                    // se ho già registrato un altro colore ancora allora ci sono tre nodi adiacenti di colori diversi
                     cout << 2 << '\n';
                     return 0;
                 }
