@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#pragma GCC optimize("Os")
+#pragma GCC optimize("Ofast")
 
 constexpr ll MAXN = 1e6 + 6;
 constexpr ll PW = 1 << 21; // smallest 2^k >= 2 * MAXN
