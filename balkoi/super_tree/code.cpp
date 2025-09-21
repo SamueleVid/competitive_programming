@@ -10,7 +10,7 @@ constexpr ll MAXN = 1e6 + 5;
 
 vector<int> adj[MAXN];
 int p[MAXN];
-ll f[MAXN]; // this is equivalent to ll blocked[BITS][MAXN] in the other code
+ll f[MAXN]; // this is equivalent to bool blocked[BITS][MAXN] in the other code
 ll pows[BITS];
 ll pows_mod[BITS];
 
