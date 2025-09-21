@@ -1,4 +1,4 @@
-// this code shares the same idea as the other one in this directory, but it  runs for all bits parellel.
+// this code shares the same idea as the other one in this directory, but it runs for all bits parellel.
 #include <bits/stdc++.h>
 using namespace std;
 #pragma GCC optimize("Ofast")
